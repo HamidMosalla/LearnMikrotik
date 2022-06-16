@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LearnMikrotik_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="UserIDfk" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleSummary" Type="nvarchar" MaxLength="500" />
+          <Property Name="ArticleContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArticleVisible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="UserIDfk" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CommentDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommentEmail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CommentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommentWebsite" Type="nvarchar" MaxLength="200" />
+          <Property Name="CommentText" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CourseLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseDateStart" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CourseDateEnd" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CoursePicture" Type="nvarchar" MaxLength="200" />
+          <Property Name="CourseDES" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseRegister">
+          <Key>
+            <PropertyRef Name="CourseRegisterID" />
+          </Key>
+          <Property Name="CourseRegisterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseIDfk" Type="int" Nullable="false" />
+          <Property Name="UserIDfk" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CourseActive" Type="bit" Nullable="false" />
+          <Property Name="FirtName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="BirthDate" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastDegree" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShoShenasname" Type="nvarchar" MaxLength="50" />
+          <Property Name="SodourShenasname" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShoMeli" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassedPrerequisite" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrerequisiteNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resume" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="HitCounter">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="Counter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="jQuery">
+          <Key>
+            <PropertyRef Name="jQueryID" />
+          </Key>
+          <Property Name="jQueryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jQueryTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="jQueryContent" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="jQueryPicture" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Miscellaneous">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="MsSummary" Type="nvarchar" MaxLength="500" />
+          <Property Name="MsContent" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="PictureDES" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PicturesURL">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PicturePostIDfk" Type="int" Nullable="false" />
+          <Property Name="PictureURL" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostType" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PostDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostPicture" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="TotalVoter" Type="int" Nullable="false" />
+          <Property Name="RatingPreValue" Type="int" Nullable="false" />
+          <Property Name="RatingResult" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserIDfk" />
+          </Key>
+          <Property Name="UserIDfk" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+          <Property Name="About" Type="nvarchar" MaxLength="2000" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Messenger" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="int" Nullable="false" />
+          <Property Name="VideoUrl" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="VideoDES" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Article_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseRegister_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CourseRegister" Type="Self.CourseRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseRegister">
+              <PropertyRef Name="CourseIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HitCounter_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HitCounter" Type="Self.HitCounter" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="HitCounter">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Miscellaneous_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Miscellaneous" Type="Self.Miscellaneous" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Miscellaneous">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picture_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PicturesURL_Picture">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PicturesURL" Type="Self.PicturesURL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="PostIDfk" />
+            </Principal>
+            <Dependent Role="PicturesURL">
+              <PropertyRef Name="PicturePostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LearnMikrotik_DatabaseModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseRegister" EntityType="Self.CourseRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HitCounter" EntityType="Self.HitCounter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jQuery" EntityType="Self.jQuery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Miscellaneous" EntityType="Self.Miscellaneous" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PicturesURL" EntityType="Self.PicturesURL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Article_Post" Association="Self.FK_Article_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Post" Association="Self.FK_Comment_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseRegister_Course" Association="Self.FK_CourseRegister_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseRegister" EntitySet="CourseRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HitCounter_Post" Association="Self.FK_HitCounter_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="HitCounter" EntitySet="HitCounter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Miscellaneous_Post" Association="Self.FK_Miscellaneous_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Miscellaneous" EntitySet="Miscellaneous" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picture_Post" Association="Self.FK_Picture_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PicturesURL_Picture" Association="Self.FK_PicturesURL_Picture">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="PicturesURL" EntitySet="PicturesURL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Post" Association="Self.FK_Rating_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Post" Association="Self.FK_Video_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LearnMikrotik_DatabaseModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="LearnMikrotik_DatabaseEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="Articles" EntityType="LearnMikrotik_DatabaseModel.Article" />
+          <EntitySet Name="Comments" EntityType="LearnMikrotik_DatabaseModel.Comment" />
+          <EntitySet Name="HitCounters" EntityType="LearnMikrotik_DatabaseModel.HitCounter" />
+          <EntitySet Name="jQueries" EntityType="LearnMikrotik_DatabaseModel.jQuery" />
+          <EntitySet Name="Miscellaneous" EntityType="LearnMikrotik_DatabaseModel.Miscellaneou" />
+          <EntitySet Name="Pictures" EntityType="LearnMikrotik_DatabaseModel.Picture" />
+          <EntitySet Name="Posts" EntityType="LearnMikrotik_DatabaseModel.Post" />
+          <EntitySet Name="Ratings" EntityType="LearnMikrotik_DatabaseModel.Rating" />
+          <EntitySet Name="sysdiagrams" EntityType="LearnMikrotik_DatabaseModel.sysdiagram" />
+          <EntitySet Name="UserProfiles" EntityType="LearnMikrotik_DatabaseModel.UserProfile" />
+          <EntitySet Name="Videos" EntityType="LearnMikrotik_DatabaseModel.Video" />
+          <AssociationSet Name="FK_Article_Post" Association="LearnMikrotik_DatabaseModel.FK_Article_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Post" Association="LearnMikrotik_DatabaseModel.FK_Comment_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HitCounter_Post" Association="LearnMikrotik_DatabaseModel.FK_HitCounter_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="HitCounter" EntitySet="HitCounters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Miscellaneous_Post" Association="LearnMikrotik_DatabaseModel.FK_Miscellaneous_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Miscellaneous" EntitySet="Miscellaneous" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picture_Post" Association="LearnMikrotik_DatabaseModel.FK_Picture_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Post" Association="LearnMikrotik_DatabaseModel.FK_Rating_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Post" Association="LearnMikrotik_DatabaseModel.FK_Video_Post">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+          <EntitySet Name="PicturesURLs" EntityType="LearnMikrotik_DatabaseModel.PicturesURL" />
+          <AssociationSet Name="FK_PicturesURL_Picture" Association="LearnMikrotik_DatabaseModel.FK_PicturesURL_Picture">
+            <End Role="Picture" EntitySet="Pictures" />
+            <End Role="PicturesURL" EntitySet="PicturesURLs" />
+          </AssociationSet>
+          <EntitySet Name="Courses" EntityType="LearnMikrotik_DatabaseModel.Course" />
+          <EntitySet Name="CourseRegisters" EntityType="LearnMikrotik_DatabaseModel.CourseRegister" />
+          <AssociationSet Name="FK_CourseRegister_Course" Association="LearnMikrotik_DatabaseModel.FK_CourseRegister_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseRegister" EntitySet="CourseRegisters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="UserIDfk" Type="Guid" Nullable="false" />
+          <Property Name="ArticleSummary" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleContent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ArticleVisible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Article_Post" FromRole="Article" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="UserIDfk" Type="Guid" Nullable="false" />
+          <Property Name="CommentEmail" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CommentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CommentWebsite" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CommentText" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Comment_Post" FromRole="Comment" ToRole="Post" />
+          <Property Type="String" Name="CommentDate" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HitCounter">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="Counter" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_HitCounter_Post" FromRole="HitCounter" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="jQuery">
+          <Key>
+            <PropertyRef Name="jQueryID" />
+          </Key>
+          <Property Name="jQueryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="jQueryTitle" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="jQueryContent" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="jQueryPicture" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Miscellaneou">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="MsSummary" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="MsContent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Miscellaneous_Post" FromRole="Miscellaneous" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="PictureDES" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Picture_Post" FromRole="Picture" ToRole="Post" />
+          <NavigationProperty Name="PicturesURLs" Relationship="LearnMikrotik_DatabaseModel.FK_PicturesURL_Picture" FromRole="Picture" ToRole="PicturesURL" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="PostType" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="PostTitle" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PostDate" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PostPicture" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="LearnMikrotik_DatabaseModel.FK_Article_Post" FromRole="Post" ToRole="Article" />
+          <NavigationProperty Name="Comments" Relationship="LearnMikrotik_DatabaseModel.FK_Comment_Post" FromRole="Post" ToRole="Comment" />
+          <NavigationProperty Name="HitCounter" Relationship="LearnMikrotik_DatabaseModel.FK_HitCounter_Post" FromRole="Post" ToRole="HitCounter" />
+          <NavigationProperty Name="Miscellaneou" Relationship="LearnMikrotik_DatabaseModel.FK_Miscellaneous_Post" FromRole="Post" ToRole="Miscellaneous" />
+          <NavigationProperty Name="Picture" Relationship="LearnMikrotik_DatabaseModel.FK_Picture_Post" FromRole="Post" ToRole="Picture" />
+          <NavigationProperty Name="Ratings" Relationship="LearnMikrotik_DatabaseModel.FK_Rating_Post" FromRole="Post" ToRole="Rating" />
+          <NavigationProperty Name="Video" Relationship="LearnMikrotik_DatabaseModel.FK_Video_Post" FromRole="Post" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="TotalVoter" Type="Int32" Nullable="false" />
+          <Property Name="RatingPreValue" Type="Int32" Nullable="false" />
+          <Property Name="RatingResult" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Rating_Post" FromRole="Rating" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserIDfk" />
+          </Key>
+          <Property Name="UserIDfk" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Avatar" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="About" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="WebSite" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Messenger" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="PostIDfk" />
+          </Key>
+          <Property Name="PostIDfk" Type="Int32" Nullable="false" />
+          <Property Name="VideoUrl" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Post" Relationship="LearnMikrotik_DatabaseModel.FK_Video_Post" FromRole="Video" ToRole="Post" />
+          <Property Type="String" Name="VideoDES" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Article_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Article" Type="LearnMikrotik_DatabaseModel.Article" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Comment" Type="LearnMikrotik_DatabaseModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HitCounter_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="HitCounter" Type="LearnMikrotik_DatabaseModel.HitCounter" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="HitCounter">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Miscellaneous_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Miscellaneous" Type="LearnMikrotik_DatabaseModel.Miscellaneou" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Miscellaneous">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picture_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Picture" Type="LearnMikrotik_DatabaseModel.Picture" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Rating" Type="LearnMikrotik_DatabaseModel.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Post">
+          <End Role="Post" Type="LearnMikrotik_DatabaseModel.Post" Multiplicity="1" />
+          <End Role="Video" Type="LearnMikrotik_DatabaseModel.Video" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="PostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PicturesURL">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Type="Int32" Name="PictureID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="PicturePostIDfk" Nullable="false" />
+          <Property Type="String" Name="PictureURL" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Picture" Relationship="LearnMikrotik_DatabaseModel.FK_PicturesURL_Picture" FromRole="PicturesURL" ToRole="Picture" />
+        </EntityType>
+        <Association Name="FK_PicturesURL_Picture">
+          <End Type="LearnMikrotik_DatabaseModel.Picture" Role="Picture" Multiplicity="1" />
+          <End Type="LearnMikrotik_DatabaseModel.PicturesURL" Role="PicturesURL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="PostIDfk" />
+            </Principal>
+            <Dependent Role="PicturesURL">
+              <PropertyRef Name="PicturePostIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Type="Int32" Name="CourseID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="CourseTitle" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CourseLocation" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CourseDateStart" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CourseDateEnd" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CoursePicture" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CourseDES" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseRegisters" Relationship="LearnMikrotik_DatabaseModel.FK_CourseRegister_Course" FromRole="Course" ToRole="CourseRegister" />
+        </EntityType>
+        <EntityType Name="CourseRegister">
+          <Key>
+            <PropertyRef Name="CourseRegisterID" />
+          </Key>
+          <Property Type="Int32" Name="CourseRegisterID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="CourseIDfk" Nullable="false" />
+          <Property Type="Guid" Name="UserIDfk" Nullable="false" />
+          <Property Type="Boolean" Name="CourseActive" Nullable="false" />
+          <Property Type="String" Name="FirtName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FatherName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Gender" Nullable="false" />
+          <Property Type="String" Name="BirthDate" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CellNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Occupation" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastDegree" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShoShenasname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SodourShenasname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShoMeli" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PassedPrerequisite" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrerequisiteNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Resume" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course" Relationship="LearnMikrotik_DatabaseModel.FK_CourseRegister_Course" FromRole="CourseRegister" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_CourseRegister_Course">
+          <End Type="LearnMikrotik_DatabaseModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="LearnMikrotik_DatabaseModel.CourseRegister" Role="CourseRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseRegister">
+              <PropertyRef Name="CourseIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LearnMikrotik_DatabaseModelStoreContainer" CdmEntityContainer="LearnMikrotik_DatabaseEntities">
+          <EntitySetMapping Name="Articles"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Article"><MappingFragment StoreEntitySet="Article">
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="UserIDfk" ColumnName="UserIDfk" />
+            <ScalarProperty Name="ArticleSummary" ColumnName="ArticleSummary" />
+            <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+            <ScalarProperty Name="ArticleVisible" ColumnName="ArticleVisible" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Comments"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Comment"><MappingFragment StoreEntitySet="Comment">
+            <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="UserIDfk" ColumnName="UserIDfk" />
+            <ScalarProperty Name="CommentEmail" ColumnName="CommentEmail" />
+            <ScalarProperty Name="CommentName" ColumnName="CommentName" />
+            <ScalarProperty Name="CommentWebsite" ColumnName="CommentWebsite" />
+            <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HitCounters"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.HitCounter"><MappingFragment StoreEntitySet="HitCounter">
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="Counter" ColumnName="Counter" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="jQueries"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.jQuery"><MappingFragment StoreEntitySet="jQuery">
+            <ScalarProperty Name="jQueryID" ColumnName="jQueryID" />
+            <ScalarProperty Name="jQueryTitle" ColumnName="jQueryTitle" />
+            <ScalarProperty Name="jQueryContent" ColumnName="jQueryContent" />
+            <ScalarProperty Name="jQueryPicture" ColumnName="jQueryPicture" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Miscellaneous"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Miscellaneou"><MappingFragment StoreEntitySet="Miscellaneous">
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="MsSummary" ColumnName="MsSummary" />
+            <ScalarProperty Name="MsContent" ColumnName="MsContent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pictures"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Picture"><MappingFragment StoreEntitySet="Picture">
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="PictureDES" ColumnName="PictureDES" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Posts"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Post"><MappingFragment StoreEntitySet="Post">
+            <ScalarProperty Name="PostID" ColumnName="PostID" />
+            <ScalarProperty Name="PostType" ColumnName="PostType" />
+            <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+            <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+            <ScalarProperty Name="PostPicture" ColumnName="PostPicture" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ratings"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Rating"><MappingFragment StoreEntitySet="Rating">
+            <ScalarProperty Name="RatingID" ColumnName="RatingID" />
+            <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="TotalVoter" ColumnName="TotalVoter" />
+            <ScalarProperty Name="RatingPreValue" ColumnName="RatingPreValue" />
+            <ScalarProperty Name="RatingResult" ColumnName="RatingResult" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.UserProfile"><MappingFragment StoreEntitySet="UserProfile">
+            <ScalarProperty Name="UserIDfk" ColumnName="UserIDfk" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+            <ScalarProperty Name="About" ColumnName="About" />
+            <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Messenger" ColumnName="Messenger" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Videos"><EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Video"><MappingFragment StoreEntitySet="Video">
+            <ScalarProperty Name="VideoDES" ColumnName="VideoDES" />
+                <ScalarProperty Name="PostIDfk" ColumnName="PostIDfk" />
+            <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PicturesURLs">
+            <EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.PicturesURL">
+              <MappingFragment StoreEntitySet="PicturesURL">
+                <ScalarProperty Name="PictureURL" ColumnName="PictureURL" />
+                <ScalarProperty Name="PicturePostIDfk" ColumnName="PicturePostIDfk" />
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseDES" ColumnName="CourseDES" />
+                <ScalarProperty Name="CoursePicture" ColumnName="CoursePicture" />
+                <ScalarProperty Name="CourseDateEnd" ColumnName="CourseDateEnd" />
+                <ScalarProperty Name="CourseDateStart" ColumnName="CourseDateStart" />
+                <ScalarProperty Name="CourseLocation" ColumnName="CourseLocation" />
+                <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseRegisters">
+            <EntityTypeMapping TypeName="LearnMikrotik_DatabaseModel.CourseRegister">
+              <MappingFragment StoreEntitySet="CourseRegister">
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="PrerequisiteNumber" ColumnName="PrerequisiteNumber" />
+                <ScalarProperty Name="PassedPrerequisite" ColumnName="PassedPrerequisite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ShoMeli" ColumnName="ShoMeli" />
+                <ScalarProperty Name="SodourShenasname" ColumnName="SodourShenasname" />
+                <ScalarProperty Name="ShoShenasname" ColumnName="ShoShenasname" />
+                <ScalarProperty Name="LastDegree" ColumnName="LastDegree" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirtName" ColumnName="FirtName" />
+                <ScalarProperty Name="CourseActive" ColumnName="CourseActive" />
+                <ScalarProperty Name="UserIDfk" ColumnName="UserIDfk" />
+                <ScalarProperty Name="CourseIDfk" ColumnName="CourseIDfk" />
+                <ScalarProperty Name="CourseRegisterID" ColumnName="CourseRegisterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="LearnMikrotikModel">
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Article" Width="1.5" PointX="3" PointY="1.75" Height="2.1725878906249996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Comment" Width="1.5" PointX="3" PointY="4.625" Height="2.5571907552083335" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.HitCounter" Width="1.5" PointX="3" PointY="8" Height="1.5956835937499996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.jQuery" Width="1.5" PointX="5.75" PointY="7.75" Height="1.7879850260416674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Miscellaneou" Width="1.5" PointX="3" PointY="10.25" Height="1.7879850260416674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Picture" Width="1.5" PointX="3" PointY="12.875" Height="1.5956835937499996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Post" Width="1.5" PointX="0.75" PointY="9" Height="3.3263964843749996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Rating" Width="1.5" PointX="3" PointY="15.125" Height="2.1725878906249978" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" Height="1.9802864583333353" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.UserProfile" Width="1.5" PointX="9.75" PointY="7.75" Height="2.5571907552083317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Video" Width="1.5" PointX="3" PointY="18.125" Height="1.5956835937500031" IsExpanded="true" />
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Article_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.5" PointY="9" />
+          <edmx:ConnectorPoint PointX="1.5" PointY="2.8362939453125" />
+          <edmx:ConnectorPoint PointX="3" PointY="2.8362939453125" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Comment_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="9" />
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="5.9035953776041667" />
+          <edmx:ConnectorPoint PointX="3" PointY="5.9035953776041667" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_HitCounter_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="9.297841796875" />
+          <edmx:ConnectorPoint PointX="3" PointY="9.297841796875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Miscellaneous_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="11.143992513020834" />
+          <edmx:ConnectorPoint PointX="3" PointY="11.143992513020834" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Picture_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.5" PointY="12.326396484375" />
+          <edmx:ConnectorPoint PointX="1.5" PointY="13.768992513020834" />
+          <edmx:ConnectorPoint PointX="1.8229191666666667" PointY="13.768992513020834" />
+          <edmx:ConnectorPoint PointX="1.9895858333333332" PointY="13.768992513020834" />
+          <edmx:ConnectorPoint PointX="3" PointY="13.768992513020834" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Rating_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="12.326396484375" />
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="16.211293945312498" />
+          <edmx:ConnectorPoint PointX="3" PointY="16.211293945312498" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_Video_Post" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="12.326396484375" />
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="18.922841796875" />
+          <edmx:ConnectorPoint PointX="3" PointY="18.922841796875" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.PicturesURL" Width="1.5" PointX="5.25" PointY="12.875" Height="1.7879850260416674" />
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_PicturesURL_Picture">
+          <edmx:ConnectorPoint PointX="4.5" PointY="13.768992513020834" />
+          <edmx:ConnectorPoint PointX="5.25" PointY="13.768992513020834" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.Course" Width="1.5" PointX="5.375" PointY="2.375" Height="2.5571907552083384" />
+        <edmx:EntityTypeShape EntityType="LearnMikrotik_DatabaseModel.CourseRegister" Width="1.5" PointX="7.625" PointY="1.125" Height="5.2494108072916674" />
+        <edmx:AssociationConnector Association="LearnMikrotik_DatabaseModel.FK_CourseRegister_Course">
+          <edmx:ConnectorPoint PointX="6.875" PointY="3.6535953776041694" />
+          <edmx:ConnectorPoint PointX="7.625" PointY="3.6535953776041694" />
+        </edmx:AssociationConnector>
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+    <head id="Head1" runat="server">
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>آموزش میکروتیک || LearnMikrotik</title>
+        <link href="Styles/style.css" rel="stylesheet" type="text/css" />
+        <meta name="Author" content="Tjobbe Andrews, SiteCreative.net" />
+        <asp:ContentPlaceHolder id="head" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </head>
+
+
+<body>
+
+
+   <div id="container">
+
+             <form id="form1" runat="server">
+
+
+	                 <div id="holder" class="clearfix">
+
+		                <div id="logo">
+			                <h1>آموزش میکروتیک</h1>
+	                  </div>
+
+		                <div id="navigation">
+			                <ul>
+				                <li><a href="~/Default.aspx" runat="server">خانه</a></li>
+                                <li><a href="~/Article.aspx" runat="server">مقالات</a></li>
+                                <li><a href="~/Miscellaneous.aspx" runat="server">متفرقه</a></li>
+                                <li><a href="~/Picture.aspx" runat="server">عکس</a></li>
+                                <li><a href="~/Video.aspx" runat="server">ویدئو</a></li>
+                                <li><a href="~/Course.aspx" runat="server">دوره های آموزشی</a></li>
+				                <li><a href="~/Portfolio.aspx" runat="server">سوابق</a></li>
+                                <li><a href="~/About.aspx" runat="server">درباره ی ما</a></li>
+				                <li><a href="~/Contact.aspx" runat="server">تماس با ما</a></li>
+			                </ul>
+	                    </div>
+                        <hr />
+
+                           <br />
+
+                         <div style="height:auto">
+
+                               <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                               </asp:ContentPlaceHolder>
+
+                                
+                         </div>
+
+
+
+
+
+                         </div>
+
+
+
+
+	                <div id="footer">
+		                <ul>
+			              <li><a id="A1" href="~/Default.aspx" runat="server">خانه</a></li>
+                          <li><a id="A2" href="~/Article.aspx" runat="server">مقالات</a></li>
+                          <li><a id="A3" href="~/Miscellaneous.aspx" runat="server">متفرقه</a></li>
+                          <li><a id="A4" href="~/Picture.aspx" runat="server">عکس</a></li>
+                          <li><a id="A5" href="~/Video.aspx" runat="server">ویدئو</a></li>
+                          <li><a id="A6" href="~/Course.aspx" runat="server">دوره های آموزشی</a></li>
+				          <li><a id="A7" href="~/Portfolio.aspx" runat="server">سوابق</a></li>
+                          <li><a id="A8" href="~/About.aspx" runat="server">درباره ی ما</a></li>
+				          <li><a id="A9" href="~/Contact.aspx" runat="server">تماس با ما</a></li>
+			               
+		                </ul>
+	                </div>
+
+                   </form>
+
+        </div>
+
+
+</body>
+
+</html>
